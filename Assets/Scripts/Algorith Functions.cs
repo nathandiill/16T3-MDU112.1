@@ -81,5 +81,26 @@ public class AlgorithFunctions : MonoBehaviour
 
         return selectedStatBonus;
     }
+
+    // Part 3: Experience Points
+    // Current experience points are added with the gained experience points. If this value is greated than the
+    // xp value required to reach the next level, the player is notified they leveled up with their new xp value
+    public float experienceGain(int playerLevel, float currentExperiencePoints, float gainedExperiencePoints)
+    {
+        float xpToNextLevel = (Mathf.Pow(playerLevel + 1, 3.25f));
+
+        float newExperiencePoints = (currentExperiencePoints + gainedExperiencePoints);
+        if (newExperiencePoints > xpToNextLevel)
+        {
+            Console.WriteLine("Player has leveled up, your current XP is now" + newExperiencePoints);
+            playerLevel = (playerLevel + 1);
+        }
+        else
+        {
+            Console.WriteLine("Your current XP is now" + newExperiencePoints);
+        }
+
+        return newExperiencePoints;
+    }
 }
 
