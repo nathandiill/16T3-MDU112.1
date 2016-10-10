@@ -7,7 +7,7 @@ public class AlgorithFunctions : MonoBehaviour
     int playerLevel = 1;
     float xpRequired = 1;
 
-    // Part 1: XP Algorithm
+    // Part 1: Experience for Next Level
     // Takes input from the players level and uses the value to return the xp required
     public float levelToXp(int playerLevel, float xpRequired)
     {
@@ -82,7 +82,7 @@ public class AlgorithFunctions : MonoBehaviour
         return selectedStatBonus;
     }
 
-    // Part 3: Experience Points
+    // Part 3: Leveling Up
     // Current experience points are added with the gained experience points. If this value is greated than the
     // xp value required to reach the next level, the player is notified they leveled up with their new xp value
     public float experienceGain(int playerLevel, float currentExperiencePoints, float gainedExperiencePoints)
@@ -102,5 +102,8 @@ public class AlgorithFunctions : MonoBehaviour
 
         return newExperiencePoints;
     }
+
+    // Part 4: Current Player Speed
+    // 
 }
 
