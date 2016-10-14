@@ -4,15 +4,12 @@ using System.Collections;
 
 public class AlgorithFunctions : MonoBehaviour
 {
-    int playerLevel = 1;
-    float xpRequired = 1;
-
     // Part 1: Experience for Next Level
     // Takes input from the players level and uses the value to return the xp required
     public float levelToXp(int playerLevel, float xpRequired)
     {
         float xpRequiredCalc = ((Mathf.Pow(playerLevel + 1, 3.25f)) - (Mathf.Pow(playerLevel, 3.25f)));
-        Debug.Log(xpRequiredCalc + " to level " + (playerLevel + 1));
+        Debug.Log(xpRequiredCalc + "XP required to level " + (playerLevel + 1));
 
         xpRequiredCalc = xpRequired;
         return xpRequired;
@@ -104,10 +101,29 @@ public class AlgorithFunctions : MonoBehaviour
     }
 
     // Part 4: Current Player Speed
-    // 
+    // Player agility stat is based between the stat values 1-5. Speed boost is 10% with a maximum speed of 9ms.
+    // An if statement is implemented so any value above 5 is reduced to the top speed.
     public float playerCurrentSpeed(float playerAgility, bool speedBoostActive, float playerMaximumSpeed)
     {
-        return currentSpeed;
+        float playerCurrentSpeed = UnityEngine.Random.Range(1, 6);
+
+        if (speedBoostActive == true)
+        {
+            playerCurrentSpeed = (playerAgility / 2) * 3 * 1.1f;
+        }
+        else
+        {
+            playerCurrentSpeed = (playerAgility / 2) * 3;
+        }
+
+        if (playerCurrentSpeed > 9)
+        {
+            playerCurrentSpeed = 9;
+        }
+
+        Debug.Log("Your current speed is " + playerCurrentSpeed);
+
+        return playerCurrentSpeed;
     }
     
     // Run
@@ -116,6 +132,7 @@ public class AlgorithFunctions : MonoBehaviour
         levelToXp(20, 1000);
         selectBonus(20);
         experienceGain(20, 30000, 50000);
+        playerCurrentSpeed(5, true, 9);
     }
 }
 
